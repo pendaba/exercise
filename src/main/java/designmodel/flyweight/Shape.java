@@ -1,0 +1,5 @@
+package main.java.designmodel.flyweight;
+
+public interface Shape {
+    void draw();
+}
