@@ -1,5 +1,8 @@
 package main.java.thread.lock;
 
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
 /**
  * AbstractQueuedSynchronizer（同步器）用来构建锁或者其他同步组件。它使用一个int成员表示同步状态，通过内置的fifo队列完成资源获取线程的排队工作
  *
@@ -25,4 +28,42 @@ package main.java.thread.lock;
  *
  */
 public class LockTest {
+    static  ReentrantReadWriteLock readWriteLock = new ReentrantReadWriteLock(true);
+    static int count = 0;
+    public static void  write(){
+        readWriteLock.writeLock().lock();
+        try {
+            count++;
+        } catch (Exception e) {
+            System.out.println(e);
+
+        } finally {
+            readWriteLock.writeLock().unlock();
+        }
+
+    }
+    public static void read(){
+        try {
+            readWriteLock.readLock().lock();
+            System.out.println(count);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            readWriteLock.readLock().unlock();
+        }
+
+    }
+    public static void main(String[] args) {
+
+        Thread thread = new Thread(() -> {
+           write();
+        });
+        thread.start();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        read();
+    }
 }

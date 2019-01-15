@@ -1,4 +1,4 @@
-package main.java.data.collection;
+package main.java.data.search;
 
 /**
  * @author fupengga
