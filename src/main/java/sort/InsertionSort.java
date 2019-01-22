@@ -28,27 +28,17 @@ public class InsertionSort {
 //                }
 //            }
 //        }
-//        int preIndex,current;
-//        for(int i = 1;i<arr.length;i++){
-//            preIndex = i-1;
-//            current = arr[i];
-//            while (preIndex>=0 && arr[preIndex] > current){
-//                arr[preIndex+1] = arr[preIndex];
-//                preIndex--;
-//            }
-//            arr[preIndex+1] = current;
-//        }
-
-
 
         int preIndex, current;
         for (int i = 1; i < arr.length; i++) {
             preIndex = i - 1;
             current = arr[i];
+            //while循环的左右将有序数组中比它之后第一个元素大的元素向后平移，但是会使数组中出现一组重复元素
             while (preIndex >= 0 && arr[preIndex] > current) {
                 arr[preIndex + 1] = arr[preIndex];
                 preIndex--;
             }
+            //替换元素到合适的位置
             arr[preIndex + 1] = current;
 
 

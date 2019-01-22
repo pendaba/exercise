@@ -1,6 +1,5 @@
 package main.java.thread.concurrent_utils;
 
-import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 public class CyclicBarrierTest2 {

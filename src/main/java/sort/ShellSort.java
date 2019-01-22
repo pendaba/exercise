@@ -2,34 +2,78 @@ package main.java.sort;
 
 import java.util.Arrays;
 
+/**
+ * @author fupengga
+ * 希尔排序
+ * 思想：通过增量排序和插入排序结合的方式，提高排序的效率。
+ * 增量的间隔序列表达式：h=3h+1
+ * 希尔排序比插入排序快的原因：1 增量排序数据移动少且有效率；2 增量排序之后的数据基本有序，插入排序的复制也会减少。
+ *
+ */
 public class ShellSort {
+    /**
+     * while实现
+     * @param arr
+     * @return
+     */
     public static int[] shellSort(int[] arr){
-        int temp = 0;
-        int incre = arr.length;
-        while(true){
-            incre = incre/2;
-            for(int k = 0;k<incre;k++){    //根据增量分为若干子序列
-                for(int i=k+incre;i<arr.length;i+=incre){
-                    for(int j=i;j>k;j-=incre){
-                        if(arr[j]<arr[j-incre]){
-                            temp = arr[j-incre];
-                            arr[j-incre] = arr[j];
-                            arr[j] = temp;
-                        }else{
-                            break;
-                        }
+        int temp;
+        //增量排序的增量，一般用h表示
+        int h = 1;
+        while (h <= arr.length/3){
+            h = h*3 + 1;
+        }
+        while (h > 0){
+            for(int outer = h;outer<arr.length;outer++){
+                temp = arr[outer];
+                int inner = outer;
+                System.out.println("外层循环  h:"+h+"  ,temp:"+temp+"    ,inner:"+inner+"    ,arr:"+Arrays.toString(arr));
+                while(inner > h-1 && arr[inner-h] >= temp){
+                    arr[inner] = arr[inner-h];
+                    inner -= h;
+                }
+                arr[inner] = temp;
+            }
+            h = (h-1)/3;
+        }
+
+
+        return arr;
+
+    }
+
+    /**
+     * for循环实现
+     * @param arr
+     * @return
+     */
+    public static int[] shellSort1(int[] arr) {
+        int temp;
+        //增量排序的增量，一般用h表示
+        int h = 1;
+        while (h <= arr.length / 3) {
+            h = h * 3 + 1;
+        }
+        while (h > 0) {
+            for (int outer = h; outer < arr.length; outer++) {
+                for (int j = outer; j > 0; j -= h) {
+                    if (arr[j] < arr[j - h]) {
+                        temp = arr[j];
+                        arr[j] = arr[j - h];
+                        arr[j - h] = temp;
+                    } else {
+                        break;
                     }
                 }
             }
-            if(incre == 1){
-                break;
-            }
+            h = (h - 1) / 3;
         }
-        return  arr;
+
+        return arr;
     }
     public static void main(String[] args) {
         int[] arr = {1,10,7,78,123,34,12};
-        System.out.println(Arrays.toString(shellSort(arr)));
+        System.out.println(Arrays.toString(shellSort1(arr)));
 
     }
 }

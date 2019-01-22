@@ -15,8 +15,7 @@ public class Anagram {
     static int count;
     static char[] arrChar = new char[100];
 
-    public static void abcd
-            (String[] args) throws Exception{
+    public static void main(String[] args) throws Exception{
         System.out.println("Enter a word : ");
         String input = getString();
         size = input.length();
