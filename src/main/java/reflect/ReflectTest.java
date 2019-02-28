@@ -1,6 +1,8 @@
 package main.java.reflect;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.util.Arrays;
 
 /**
  * @author fupengga
@@ -24,12 +26,13 @@ import java.lang.reflect.Constructor;
 public class ReflectTest {
 
     public static void main(String[] args) throws Exception{
+
         //获取Class 1 Class.forName 2 对象.class 3 实例.getClass()
         Student student = new Student();
 
         Class<Student> studentClass1 = (Class<Student>) student.getClass();
         Class<Student> studentClass2 = Student.class;
-
+        System.out.println(studentClass1.getClassLoader());
         System.out.println(Student.class == student.getClass());
         System.out.println(studentClass2.getName());
         Class<Student> studentClass3 = (Class<Student>) Class.forName(studentClass2.getName());
@@ -47,7 +50,31 @@ public class ReflectTest {
         Object obj = constructor.newInstance("23333");
         System.out.println(obj);
 
+        getPrivateField();
+    }
+    public static void getPrivateField(){
+        try {
+            Class<?> studentClass = Class.forName("main.java.reflect.Student");
+            final Object student = studentClass.newInstance();
+            Field fieldTag = studentClass.getDeclaredField("TAG");
+            fieldTag.setAccessible(true);
+            String tag = (String) fieldTag.get(student);
+            System.out.println(tag);
 
+            Field[] fields =  studentClass.getDeclaredFields();
+            Arrays.stream(fields).map(field -> {
+                field.setAccessible(true);
+                try {
+                   return field.get(student);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+                return "";
+            }).forEach(System.out::println);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

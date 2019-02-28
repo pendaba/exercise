@@ -77,6 +77,38 @@ public class Tree {
             inOrder(node.getrChild());
         }
     }
+    /**
+     *
+     * @param node
+     * 中序遍历 1 遍历左子树 2 访问本身 3 遍历右子树
+     *
+     * 前序遍历 1 访问本身 2 遍历左子树  3 遍历右子树
+     *
+     * 后序遍历 1 遍历左子树 2 遍历右子树 3 访问本身
+     */
+    public void middleOrder(Node node){
+        if (node != null){
+            middleOrder(node.getlChild());
+            System.out.print("节点的值："+node.getiData()+"  ");
+            middleOrder(node.getrChild());
+        }
+    }
+    /**
+     *
+     * @param node
+     * 中序遍历 1 遍历左子树 2 访问本身 3 遍历右子树
+     *
+     * 前序遍历 1 访问本身 2 遍历左子树  3 遍历右子树
+     *
+     * 后序遍历 1 遍历左子树 2 遍历右子树 3 访问本身
+     */
+    public void afterOrder(Node node){
+        if (node != null){
+            afterOrder(node.getlChild());
+            afterOrder( node.getrChild());
+            System.out.print("节点的值："+node.getiData()+"  ");
+        }
+    }
 
     /**
      *
@@ -192,23 +224,20 @@ public class Tree {
 
     public static void main(String[] args) {
         Tree tree = new Tree();
-        tree.insert(10,0.1);
-        tree.insert(5,0.2);
-        Node parent = tree.insert(15,0.3);
-        tree.insert(8,0.4);
-        tree.insert(3,0.5);
+        tree.insert(20,0.1);
+        tree.insert(10,0.2);
+        Node parent = tree.insert(30,0.3);
+        tree.insert(5,0.4);
         tree.insert(12,0.5);
-        tree.insert(20,0.5);
-        tree.insert(11,0.5);
-        tree.insert(16,0.5);
-        tree.insert(24,0.5);
+        tree.insert(25,0.5);
+        tree.insert(40,0.5);
 //        tree.inOrder(tree.find(10));
         System.out.println("最小值： "+tree.findMin().getiData());
         System.out.println("最大值： "+tree.findMax().getiData());
-        System.out.println("插入测试   返回父节点的值： "+parent.getiData());
-        tree.inOrder(tree.find(10));
+//        System.out.println("插入测试   返回父节点的值： "+parent.getiData());
+        tree.afterOrder(tree.find(20));
 //      System.out.println("后继节点： "+tree.getSuccessor(tree.find(15)).getiData());
-        tree.delete(15);
-        tree.inOrder(tree.find(10));
+//        tree.delete(15);
+//        tree.inOrder(tree.find(10));
     }
 }

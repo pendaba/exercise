@@ -1,17 +1,13 @@
 package main.java.map;
 
-import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class HashmapTest {
     static final int MAXIMUM_CAPACITY = 1 << 30;
     public static void main(String[] args) {
-        Map<String,String> map = new HashMap<>();
-//        System.out.println(1<<4);
-//        System.out.println(2^3);
-        System.out.println(tableSizeFor(28285858));
+        Map<String,String> map = new HashMap<>(100);
+       System.out.println(tableSizeFor(100));
 
     }
     static final int tableSizeFor(int cap) {

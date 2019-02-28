@@ -1,6 +1,7 @@
 package main.java.reflect;
 
 public class Student {
+    private static final String TAG = "tag";
     private String name;
     private int age;
 

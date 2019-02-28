@@ -1,6 +1,5 @@
 package main.java.data.tree;
 
-import main.java.data.search.BinarySearch;
 
 /**
  * @author fupengga

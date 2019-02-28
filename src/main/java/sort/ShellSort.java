@@ -56,7 +56,9 @@ public class ShellSort {
         }
         while (h > 0) {
             for (int outer = h; outer < arr.length; outer++) {
-                for (int j = outer; j > 0; j -= h) {
+                System.out.println("外层循环  h="+h+"    ,outer="+outer+"    ,       arr:"+Arrays.toString(arr));
+                for (int j = outer; j > h-1; j -= h) {
+                    System.out.println("=======内层循环  outer="+outer+"    ,j="+j+"    ,arr:"+Arrays.toString(arr));
                     if (arr[j] < arr[j - h]) {
                         temp = arr[j];
                         arr[j] = arr[j - h];
@@ -72,7 +74,7 @@ public class ShellSort {
         return arr;
     }
     public static void main(String[] args) {
-        int[] arr = {1,10,7,78,123,34,12};
+        int[] arr = {1,10,7,78,123,34,12,68,90,345,89};
         System.out.println(Arrays.toString(shellSort1(arr)));
 
     }
