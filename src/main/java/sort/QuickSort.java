@@ -12,7 +12,7 @@ public class QuickSort {
     static String deep = "-";
 
     public static void quickSort(int[] arr){
-        recursionQuickSortOfMedian(arr,0,arr.length-1);
+        recursionQuickSort(arr,0,arr.length-1);
     }
 
     /**

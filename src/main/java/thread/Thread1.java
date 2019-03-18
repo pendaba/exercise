@@ -6,6 +6,7 @@ class Thread1 extends Thread{
         super(name);
         this.name=name;
     }
+    @Override
     public void run() {
         System.out.println(Thread.currentThread().getName() + " 线程运行开始!");
         for (int i = 0; i < 5; i++) {

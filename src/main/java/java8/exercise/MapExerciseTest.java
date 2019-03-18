@@ -11,11 +11,11 @@ public class MapExerciseTest {
     }
 
     public static void main(String[] args) {
-//        System.out.println(intSummary().getMax());
-//        System.out.println(intSummary().getCount());
-//        System.out.println(intSummary().getAverage());
-//        System.out.println(intSummary().getMin());
-//        System.out.println(intSummary().getSum());
+        System.out.println(intSummary().getMax());
+        System.out.println(intSummary().getCount());
+        System.out.println(intSummary().getAverage());
+        System.out.println(intSummary().getMin());
+        System.out.println(intSummary().getSum());
         Arrays.asList(new Track("一生所爱",50),new Track("roll",100),new Track("后来",90)).stream().
                 forEach(track -> {
                     System.out.println(track.getName());

@@ -1,5 +1,7 @@
 package main.java.data.tree;
 
+import java.util.ArrayDeque;
+
 /**
  * @author fupengga
  * 二叉搜索树示例
@@ -107,6 +109,30 @@ public class Tree {
             afterOrder(node.getlChild());
             afterOrder( node.getrChild());
             System.out.print("节点的值："+node.getiData()+"  ");
+        }
+    }
+
+
+    /**
+     * 宽度优先的遍历
+     * @param root
+     */
+    public void widthOrder(Node root){
+        if(root == null){
+            return;
+        }
+        ArrayDeque<Node> arrayDeque = new ArrayDeque<>();
+        arrayDeque.add(root);
+        while (!arrayDeque.isEmpty()){
+            Node node = arrayDeque.remove();
+            System.out.print(node.getiData()+",");
+            if(node.getlChild() != null){
+                arrayDeque.add(node.getlChild());
+
+            }
+            if(node.getrChild() != null){
+                arrayDeque.add(node.getrChild());
+            }
         }
     }
 
@@ -235,9 +261,11 @@ public class Tree {
         System.out.println("最小值： "+tree.findMin().getiData());
         System.out.println("最大值： "+tree.findMax().getiData());
 //        System.out.println("插入测试   返回父节点的值： "+parent.getiData());
-        tree.afterOrder(tree.find(20));
+//        tree.afterOrder(tree.find(20));
 //      System.out.println("后继节点： "+tree.getSuccessor(tree.find(15)).getiData());
 //        tree.delete(15);
 //        tree.inOrder(tree.find(10));
+        tree.middleOrder(tree.find(20));
+        tree.widthOrder(tree.find(20));
     }
 }

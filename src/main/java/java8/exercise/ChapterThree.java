@@ -38,12 +38,9 @@ public class ChapterThree {
         //return (int) artists.stream().flatMap(artist -> artist.getMembers()).count();
     }
     public static void main(String[] args) {
-//       System.out.println( sum(Arrays.asList(1,3,4,6).stream()));
-//       System.out.println(getNameAndOrigin(Arrays.asList(new Artist("春风","中国"),new Artist("子光","美国"),new Artist("陈根","法国"))));
-         Map<String,String> map = new HashMap<>();
-         map.put("aa","aaa");
-         map.put("bb","bbb");
-         System.out.println(map);
+       System.out.println( sum(Arrays.asList(1,3,4,6).stream()));
+       System.out.println(getNameAndOrigin(Arrays.asList(new Artist("春风","中国"),new Artist("子光","美国"),new Artist("陈根","法国"))));
+
     }
 
 
