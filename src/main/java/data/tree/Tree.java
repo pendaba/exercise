@@ -136,6 +136,9 @@ public class Tree {
         }
     }
 
+
+
+
     /**
      *
      * @return
@@ -248,6 +251,38 @@ public class Tree {
 
     }
 
+    /**
+     * 二叉树节点的深度
+     * @return
+     */
+    public int getDepth(int value) {
+       return recursionGetDepth(root,value,1);
+    }
+    private int recursionGetDepth(Node node,int value,int depth){
+        if(node == null){
+            return -1;
+        }
+
+        if(value == node.getiData()){
+            return depth;
+        }
+        int s = -1;
+        depth += 1;
+        if(node.getlChild() != null){
+            s=recursionGetDepth(node.getlChild(),value,depth);
+        }
+        if(s > 0) {
+            return s;
+        }
+        if( node.getrChild() != null){
+            s=recursionGetDepth(node.getrChild(),value,depth);
+        }
+        if(s > 0){
+            return s;
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
         Tree tree = new Tree();
         tree.insert(20,0.1);
@@ -258,14 +293,16 @@ public class Tree {
         tree.insert(25,0.5);
         tree.insert(40,0.5);
 //        tree.inOrder(tree.find(10));
-        System.out.println("最小值： "+tree.findMin().getiData());
-        System.out.println("最大值： "+tree.findMax().getiData());
+//        System.out.println("最小值： "+tree.findMin().getiData());
+//        System.out.println("最大值： "+tree.findMax().getiData());
 //        System.out.println("插入测试   返回父节点的值： "+parent.getiData());
 //        tree.afterOrder(tree.find(20));
 //      System.out.println("后继节点： "+tree.getSuccessor(tree.find(15)).getiData());
 //        tree.delete(15);
 //        tree.inOrder(tree.find(10));
-        tree.middleOrder(tree.find(20));
-        tree.widthOrder(tree.find(20));
+//        tree.middleOrder(tree.find(20));
+//       tree.widthOrder(tree.find(20));
+       System.out.println(tree.getDepth(30));
     }
+
 }
