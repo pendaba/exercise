@@ -1,7 +1,11 @@
 package main.java.io;
 
 import java.io.*;
-
+/**
+ * @description io测试类
+ * @author fupengga
+ * @date 2019/5/11
+ */
 public class MyOutputStream {
     public static  void  main(String args[]){
        /* // TODO自动生成的方法存根
