@@ -1,5 +1,9 @@
 package main.java.data;
-
+/**
+ * @description ccc
+ * @author fupengga
+ * @date 2019/5/11
+ */
 public class PerfectNumber {
     public static void main(String[] args){
         for(int a = 1;a<1000;a++) {
