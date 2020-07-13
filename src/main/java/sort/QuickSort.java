@@ -28,10 +28,11 @@ public class QuickSort {
         }else{
             int pivot = arr[right];
             int partition = partition(arr, left,right,pivot);
+            System.out.println(deep+"--"+Arrays.toString(arr)+"     ,partition="+partition+"     ,pivot="+pivot);
             recursionQuickSort(arr, left,partition-1);
             recursionQuickSort(arr,partition+1,right);
             deep=deep+"-";
-            System.out.println(deep+"--"+Arrays.toString(arr)+"     ,partition="+partition+"     ,pivot="+pivot);
+
         }
     }
 

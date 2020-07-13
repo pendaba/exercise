@@ -76,6 +76,7 @@ public class RandomLinkedList {
 
         return dummy.next;
     }
+
 }
 
 class Node {
