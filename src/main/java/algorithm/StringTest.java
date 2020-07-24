@@ -175,10 +175,31 @@ public class StringTest {
        return tmp;
     }
 
+    /**
+     * 左旋字符串
+     * @param s
+     * @param n
+     * @return
+     */
+    public String reverseLeftWords(String s, int n) {
+        char[] result = new char[s.length()];
+        int low = n;
+        int high = 0;
+        for(int i = 0;i<s.length()-n;i++){
+            result[i] = s.charAt(low);
+            low++;
+        }
+        for(int i = s.length()-n;i<s.length();i++){
+            result[i] = s.charAt(high);
+            high++;
+        }
+        return new String(result);
+    }
     public static void main(String[] args) {
 //        System.out.println(new StringTest().charStat("aabbcc"));
 //        System.out.println(new StringTest().maxSubstring("aaaaafghj","sdfsdfghjgfggg"));
 //        System.out.println(new StringTest().numDecodings("216"));
-        System.out.println(Arrays.toString(new StringTest().intersect(new int[]{1,2,3,1,2,4},new int[]{1,2,2})));
+//        System.out.println(Arrays.toString(new StringTest().intersect(new int[]{1,2,3,1,2,4},new int[]{1,2,2})));
+//        System.out.println(new StringTest().reverseLeftWords("abcdefg",2));
     }
 }
