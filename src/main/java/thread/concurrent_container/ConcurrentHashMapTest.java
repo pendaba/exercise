@@ -9,5 +9,6 @@ public class ConcurrentHashMapTest {
         ConcurrentHashMap<String,Integer> map = new ConcurrentHashMap<>();
         System.out.println(map.size());
 
+
     }
 }

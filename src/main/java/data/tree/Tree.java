@@ -1,6 +1,8 @@
 package main.java.data.tree;
 
 import java.util.ArrayDeque;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @author fupengga
@@ -282,6 +284,28 @@ public class Tree {
         }
         return -1;
     }
+
+    public int maxDepth(Node root) {
+        int res = 0;
+        if (root == null)
+            return res;
+        Queue<Node> queue = new LinkedList<>();
+        // 根结点入队
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            int n = queue.size();
+            for (int i = 0; i < n; i++) {
+                Node curNode = queue.poll();
+                if (curNode.getrChild() != null)
+                    queue.add(curNode.getrChild());
+                if (curNode.getlChild() != null)
+                    queue.add(curNode.getlChild());
+            }
+            res++;
+        }
+        return res;
+    }
+
 
     public static void main(String[] args) {
         Tree tree = new Tree();

@@ -195,11 +195,30 @@ public class StringTest {
         }
         return new String(result);
     }
+
+    /**
+     * 返回字符串第一个只出现一次的字符
+     * @param
+     */
+    public String firstUniqChar(String s) {
+        Map<Character,Integer>  map = new HashMap<>();
+        char[] chars = s.toCharArray();
+        for(int i =0;i< chars.length;i++){
+            map.put(chars[i],map.get(chars[i]) == null? 1:map.get(chars[i])+1);
+        }
+        for(int i = 0;i<chars.length;i++){
+            if(map.get(chars[i]) == 1){
+                return String.valueOf(chars[i]);
+            }
+        }
+        return "null";
+    }
     public static void main(String[] args) {
 //        System.out.println(new StringTest().charStat("aabbcc"));
 //        System.out.println(new StringTest().maxSubstring("aaaaafghj","sdfsdfghjgfggg"));
 //        System.out.println(new StringTest().numDecodings("216"));
 //        System.out.println(Arrays.toString(new StringTest().intersect(new int[]{1,2,3,1,2,4},new int[]{1,2,2})));
 //        System.out.println(new StringTest().reverseLeftWords("abcdefg",2));
+        System.out.println(new StringTest().firstUniqChar("advqastress"));
     }
 }
